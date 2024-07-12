@@ -22,14 +22,19 @@ public class MyController {
 	
 	
 	@RequestMapping("/DatabaseConnectivity")  
-    public String display(@RequestParam("name") String userName, @RequestParam("age") int userAge,@RequestParam("city") String userCity)  
+    public String display(@RequestParam("name") String userName,
+    @RequestParam("age")int userAge,@RequestParam("city") String userCity,
+    @RequestParam("emailId") String userEmail,
+    @RequestParam("mobNum") int userMob)  
     {  
 		System.out.println("StudentController object created...");
 		System.out.println("*** :"+userName);
 		System.out.println("*** :"+userAge);
 		System.out.println("*** :"+userCity);
+		System.out.println("*** :"+userEmail);
+		System.out.println("*** :"+userMob);
 		JDBC_Connectivity obj=new JDBC_Connectivity();
-		obj.createConnection(userName,userAge,userCity);
+		obj.createConnection(userName,userAge,userCity, userEmail, userMob);
 		
         return "Executed";  
     }  
