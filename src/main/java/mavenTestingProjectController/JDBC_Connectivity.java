@@ -7,7 +7,7 @@ import java.sql.PreparedStatement;
 public class JDBC_Connectivity {
 	
 	 static Connection con; 
-	 public void createConnection(String name, int age, String city, String emailId, int mobNo) {
+	 public void createConnection(String name, int age, String city, String emailId, long mobNo) {
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
 			String user ="root";
@@ -24,14 +24,19 @@ public class JDBC_Connectivity {
 			p.setInt(2, age);
 			p.setString(3, city);
 			p.setString(4, emailId);
-			p.setInt(5, mobNo);
+			p.setLong(5, mobNo);
 			
 			p.executeUpdate();
 			System.out.println("Successfully executed");	
 		}catch(Exception e) {
 			e.printStackTrace();
 		}
+		
 		 
 	 }
+	private void checkMobExist() {
+		// TODO Auto-generated method stub
+		
+	}
 
 }
