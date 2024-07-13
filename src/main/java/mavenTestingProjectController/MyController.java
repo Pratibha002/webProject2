@@ -1,5 +1,7 @@
 package mavenTestingProjectController;
 
+import java.util.regex.Pattern;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -32,12 +34,12 @@ public class MyController {
 			return "Invalid input!! Please provide a valid 10-digit mobile number.";
 		}
 	   else if(!checkValidName(userName)) { 
-			return "Invalid input!! cant' left the field empty or can't enter numbers and special characters in name field only [A-Z/a-z] is allowed";
+		   return "Invalid input!! Cannot leave the name field empty or enter numbers/special characters in the name field. Only [A-Z/a-z] is allowed.";
 		}else if(!checkValidName(userCity)) {
-			return "Invalid input!! cant' left the field empty or can't enter numbers and special characters in city field only [A-Z/a-z] is allowed";
-		}else if(userEmail==null) {
+			return "Invalid input!! Cannot leave the city field empty or enter numbers/special characters in the name field. Only [A-Z/a-z] is allowed.";
+		}else if(userEmail==null|| !checkValidEmail(userEmail)) {
 			 return "Invalid input!! Email must be provided";
-		}else if(userAge==""||userAge.length()<=0) {
+		}else if(userAge==""||Integer.parseInt(userAge) <= 0) {
 			 return "Invalid input!! Enter valid age  ";
 		}
 		else {
@@ -62,6 +64,10 @@ public class MyController {
                 }
             }
         return true;  
+    }boolean checkValidEmail(String email){
+    	String  e ="^[a-zA-Z0-9_+&*-]+(?:\\.[a-zA-Z0-9_+&*-]+)*@(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,7}$";
+    	Pattern pattern =Pattern.compile(e);
+    	return pattern.matcher(email).matches();
     }
     
     
