@@ -1,3 +1,4 @@
+
 package mavenTestingProjectController;
 
 import java.sql.Connection;
@@ -7,7 +8,7 @@ import java.sql.PreparedStatement;
 public class JDBC_Connectivity {
 	
 	 static Connection con; 
-	 public void createConnection(String name, int age, String city, String emailId, long mobNo) {
+	 public void createConnection(String name, String age, String city, String emailId, String mobNo) {
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
 			String user ="root";
@@ -21,10 +22,10 @@ public class JDBC_Connectivity {
 			PreparedStatement p = con.prepareStatement(query);
 			
 			p.setString(1,name);
-			p.setInt(2, age);
+			p.setString(2, age);
 			p.setString(3, city);
 			p.setString(4, emailId);
-			p.setLong(5, mobNo);
+			p.setString(5, mobNo);
 			
 			p.executeUpdate();
 			System.out.println("Successfully executed");	
@@ -34,9 +35,6 @@ public class JDBC_Connectivity {
 		
 		 
 	 }
-	private void checkMobExist() {
-		// TODO Auto-generated method stub
-		
-	}
+	
 
 }
