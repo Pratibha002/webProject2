@@ -8,7 +8,7 @@ import java.sql.PreparedStatement;
 public class JDBC_Connectivity {
 	
 	 static Connection con; 
-	 public void createConnection(String name, String age, String city, String emailId, String mobNo) {
+	 public void createConnection(String name, String age, String city, String emailId, String mobNo, String pswd) {
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
 			String user ="root";
@@ -17,7 +17,7 @@ public class JDBC_Connectivity {
 			
 			con=DriverManager.getConnection(url,password,user);
 			
-			String query ="insert into personalInfo(name, age, city, emailId, mobNum) values(?,?,?,?,?)";
+			String query ="insert into personalInfo(name, age, city, emailId, mobNum, password) values(?,?,?,?,?,?)";
 			
 			PreparedStatement p = con.prepareStatement(query);
 			
@@ -26,6 +26,7 @@ public class JDBC_Connectivity {
 			p.setString(3, city);
 			p.setString(4, emailId);
 			p.setString(5, mobNo);
+			p.setString(6, pswd);
 			
 			p.executeUpdate();
 			System.out.println("Successfully executed");	

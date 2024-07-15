@@ -3,6 +3,7 @@ package mavenTestingProjectController;
 import java.util.regex.Pattern;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -23,25 +24,35 @@ public class MyController {
 		return "Form";
 	}
 	
+	@RequestMapping("/test3")
+	public String test3(Model model) {
+		model.addAttribute("name", "pratibha");
+		
+		return "Data";
+	}
+	
 	@ResponseBody
 	@RequestMapping("/DatabaseConnectivity")  
     public String display(@RequestParam("name") String userName,
     @RequestParam("age")String userAge,@RequestParam("city") String userCity,
     @RequestParam("emailId") String userEmail,
-    @RequestParam("mobNum") String userMob)  
+    @RequestParam("mobNum") String userMob,
+    @RequestParam("pswd") String userPswd)  
     {  
 		if(userMob==""||userMob.length()>10||userMob.length()<10) {
-			return "Invalid input!! Please provide a valid 10-digit mobile number.";
+			return "Invalid input!! Please provide a valid 10-digit mobile number :)";
 		}
 	   else if(!checkValidName(userName)) { 
-		   return "Invalid input!! Cannot leave the name field empty or enter numbers/special characters in the name field. Only [A-Z/a-z] is allowed.";
+		   return "Invalid input!! Cannot leave the name field empty or enter numbers/special characters in the name field. Only [A-Z/a-z] is allowed :)";
 		}else if(!checkValidName(userCity)) {
-			return "Invalid input!! Cannot leave the city field empty or enter numbers/special characters in the name field. Only [A-Z/a-z] is allowed.";
+			return "Invalid input!! Cannot leave the city field empty or enter numbers/special characters in the name field. Only [A-Z/a-z] is allowed :)";
 		}else if(userEmail==null|| !checkValidEmail(userEmail)) {
-			 return "Invalid input!! Email must be provided";
+			 return "Invalid input!! Email must be provided :)" ;
 		}else if(userAge==""||Integer.parseInt(userAge) <= 0) {
-			 return "Invalid input!! Enter valid age  ";
-		}
+			 return "Invalid input!! Enter valid age :) ";
+		}else if(userPswd==""||userPswd.length()>10) {
+			 return "Invalid input!! Password must be provided / oops! not more than 10 character :)";
+		}	 
 		else {
 			System.out.println("StudentController object created...");
 			System.out.println("*** :"+userName);
@@ -49,12 +60,13 @@ public class MyController {
 			System.out.println("*** :"+userCity);
 			System.out.println("*** :"+userEmail);
 			System.out.println("*** :"+userMob);
+			System.out.println("*** :"+userPswd);
 			JDBC_Connectivity obj=new JDBC_Connectivity();
-			obj.createConnection(userName,userAge,userCity, userEmail, userMob);
+			obj.createConnection(userName,userAge,userCity, userEmail, userMob, userPswd);
 			return "Executed";
 		}	
     } boolean checkValidName(String name) {
-        if (name.length() == 0 || name.length() > 30 ) {
+        if (name.length() == 0 || name.length() > 50 ) {
             return false;
         }
         	for (int i = 0; i < name.length(); i++) {

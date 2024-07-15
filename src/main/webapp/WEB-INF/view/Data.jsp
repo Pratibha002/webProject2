@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    <%@ page isELIgnored = "false" %><!-- search ->expression language -->
+     <%@ page isELIgnored = "false" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,8 +8,9 @@
 <title>Insert title here</title>
 </head>
 <body>
-Hey! this is my working file.......<br><br>
+Model Attribute...<br><br>
 
-   
+${name }
+
 </body>
 </html>
