@@ -10,12 +10,8 @@
 <body>
     Model Attribute...<br><br>
 
-    Name: ${s.name }<br><br>
-    Age: ${s.age }<br><br>
-    City: ${s.city }<br><br>
-    Email: ${s.emailId }<br><br>
-    Mobile Number: ${s.mobNum }<br><br>
-    Password: ${s.password }<br><br>
+    Name: ${name }<br><br>
+   
 
 </body>
 </html>

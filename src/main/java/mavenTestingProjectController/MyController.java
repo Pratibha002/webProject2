@@ -28,8 +28,15 @@ public class MyController {
 	public String test3(Model model) {
 		model.addAttribute("name", "pratibha");
 		
-		return "Data";
+		return "Data2";
 	}
+	
+	@RequestMapping("/test4")
+	public String test4() {
+		
+		return "login";
+	}
+	
 	
 	@ResponseBody
 	@RequestMapping("/DatabaseConnectivity")  
@@ -83,4 +90,46 @@ public class MyController {
     }
     
     
-}
+
+
+//@ResponseBody
+@RequestMapping("/loginForm")
+public String login(@RequestParam("name")String userName,
+		@RequestParam("password")String userPswd, Model model ) throws Exception {
+	
+	
+	Data_Retrieval d = new Data_Retrieval();
+	
+	Student_dto s = d.checkUser(userName, userPswd);
+	System.out.println(userName);
+	System.out.println(userPswd);
+	
+	model.addAttribute("s", s);//it send the data from mode/db to view.
+	return "Data";
+ }
+}	
+	
+	
+//	@RequestMapping("/loginForm")
+//	public String login(@RequestParam("name") String username,
+//            @RequestParam("pswd") String password,
+//            Model model) {
+//	System.out.println(username);
+//	System.out.println(password);
+//
+//        boolean isValidUser = Data_Retrieval.validateUser(username, password);
+//	
+//			isValidUser = Data_Retrieval.validateUser(username, password);
+//
+//        if (isValidUser) {
+//        	
+//			 Student_dto	userDetails = Data_Retrieval.getUserDetails(username);
+//			
+//           
+//			model.addAttribute("userDetails", userDetails);
+//            return "/Data";
+//        } else {
+//            return "/login";
+//        }
+//    }
+

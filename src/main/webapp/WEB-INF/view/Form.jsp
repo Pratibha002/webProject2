@@ -13,7 +13,7 @@
      <input type="text" name="city" placeholder="Enter City"/><br><br>
      <input type="text" name="emailId" placeholder="Enter Email ID"/><br><br>
      <input type="number" name="mobNum" placeholder="Enter Phone No. "/><br><br>
-     <input type="text" name="pswd" placeholder="Enter Password "/><br><br>
+     <input type="password" name="pswd" placeholder="Enter Password "/><br><br>
      
      
      <input type="submit" value="Submit"/><br><br>
