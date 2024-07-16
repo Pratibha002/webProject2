@@ -8,8 +8,9 @@
 <title>Student Information</title>
 </head>
 <body>
-    Model Attribute...<br><br>
-
+<h2>USER  SUCCESSFULLY  LOGGEDIN!!</h2>
+   <!--Model Attribute...<br><br>  --> 
+<h4>User Data</h4>
     Name: ${s.name }<br><br>
     Age: ${s.age }<br><br>
     City: ${s.city }<br><br>

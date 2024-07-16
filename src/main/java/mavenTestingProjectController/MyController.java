@@ -100,12 +100,17 @@ public String login(@RequestParam("name")String userName,
 	
 	Data_Retrieval d = new Data_Retrieval();
 	
-	Student_dto s = d.checkUser(userName, userPswd);
-	System.out.println(userName);
-	System.out.println(userPswd);
+		Student_dto s = d.checkUser(userName, userPswd);
+		
+		System.out.println(userName);
+		System.out.println(userPswd);
+		if(s!=null) {
+		model.addAttribute("s", s);//it send the data from mode/db to view.
+		return "Data";
+	}else {
+		return "Invalid";
+	}
 	
-	model.addAttribute("s", s);//it send the data from mode/db to view.
-	return "Data";
  }
 }	
 	

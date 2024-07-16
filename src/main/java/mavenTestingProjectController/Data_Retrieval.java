@@ -7,6 +7,7 @@ import java.sql.ResultSet;
 
 public class Data_Retrieval {
 	 
+	
 	public static void main(String[] args) throws Exception {
 		Class.forName("com.mysql.cj.jdbc.Driver");
 		String user ="root";
@@ -41,12 +42,14 @@ public class Data_Retrieval {
 			System.out.println("==================================================================== ");
 		}
 		con.close();
-	} public Student_dto checkUser(String name, String pswd) throws Exception {
+	}
+	 public Student_dto checkUser(String name, String pswd) throws Exception {
 	    Class.forName("com.mysql.cj.jdbc.Driver");
 	    String user = "root";
 	    String password = "root";
 	    String url = "jdbc:mysql://localhost:3306/learning";
-
+      
+      
 	        Connection con = DriverManager.getConnection(url, user, password); 
 	        String query = "select * from personalInfo where name = ? and password = ?";
 	        PreparedStatement p = con.prepareStatement(query);
@@ -55,7 +58,7 @@ public class Data_Retrieval {
 	        ResultSet r = p.executeQuery();
 	        
 	       
-	        Student_dto s = new Student_dto(); //db
+	        Student_dto s = new Student_dto(); // 
 	        
 
 	        if (r.next()) {
@@ -66,8 +69,11 @@ public class Data_Retrieval {
 	            s.setMobNum(r.getString("mobNum"));
 	            s.setPassword(r.getString("password"));
 	            System.out.println(s);
+	            return s;
+	        }else {
+	        	return null;
 	        }
-	        return s;
+	        
 	}
 	 
 }
