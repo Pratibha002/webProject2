@@ -53,12 +53,13 @@ public class Data_Retrieval {
 	        Connection con = DriverManager.getConnection(url, user, password); 
 	        String query = "select * from personalInfo where name = ? and password = ?";
 	        PreparedStatement p = con.prepareStatement(query);
-	        p.setString(1, name);
-	        p.setString(2, pswd);
-	        ResultSet r = p.executeQuery();
+	        p.setString(1, name);//// Set first parameter (name) to the provided name
+	        p.setString(2, pswd);// Set second parameter (password) to the provided password
+
+	        ResultSet r = p.executeQuery();//Execute the query and obtain the ResultSet
 	        
 	       
-	        Student_dto s = new Student_dto(); // 
+	        Student_dto s = new Student_dto(); // Create a Student_dto object to hold the retrieved student information
 	        
 
 	        if (r.next()) {
@@ -71,6 +72,7 @@ public class Data_Retrieval {
 	            System.out.println(s);
 	            return s;
 	        }else {
+	        	//If no matching user is found, return null
 	        	return null;
 	        }
 	        

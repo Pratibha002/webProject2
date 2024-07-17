@@ -100,15 +100,21 @@ public String login(@RequestParam("name")String userName,
 	
 	Data_Retrieval d = new Data_Retrieval();
 	
+	 // Call the checkUser method to validate credentials
 		Student_dto s = d.checkUser(userName, userPswd);
 		
 		System.out.println(userName);
 		System.out.println(userPswd);
 		if(s!=null) {
+			// Add the student object to the model attribute
 		model.addAttribute("s", s);//it send the data from mode/db to view.
+		// Navigate to Data.jsp if credentials are valid
 		return "Data";
 	}else {
-		return "Invalid";
+		model.addAttribute("msg","Credential doesn't match!");
+		model.addAttribute("msg2","Please reinsert the valid 'USERNAME' / 'PASSWORD'.");
+		return "login";
+		
 	}
 	
  }
